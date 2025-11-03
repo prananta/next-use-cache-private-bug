@@ -1,5 +1,7 @@
-import { TimeInAmerica, TimeInAsia, TimeInUTC } from "./time";
 import { RefreshTime } from "./refresh-time";
+import { timeInAmerica } from "./time-america";
+import { timeInAsia } from "./time-asia";
+import { timeInUTC } from "./time-utc";
 
 export const TimeContainer = ({
   title,
@@ -18,12 +20,13 @@ export const TimeContainer = ({
       <p className="text-4xl">{time}</p>
       <RefreshTime tag={tag} />
       <p className="text-sm text-gray-500">{directive}</p>
+      <p className="text-sm text-gray-500">{`On click Refresh, only the time in this component should be updated. But it's not.`}</p>
     </div>
   );
 };
 
 export const TimeUTC = async () => {
-  const time = await TimeInUTC();
+  const time = await timeInUTC();
   return (
     <TimeContainer
       title="UTC"
@@ -35,7 +38,7 @@ export const TimeUTC = async () => {
 };
 
 export const TimeAsia = async () => {
-  const time = await TimeInAsia();
+  const time = await timeInAsia();
   return (
     <TimeContainer
       title="Asia"
@@ -47,7 +50,7 @@ export const TimeAsia = async () => {
 };
 
 export const TimeAmerica = async () => {
-  const time = await TimeInAmerica();
+  const time = await timeInAmerica();
   return (
     <TimeContainer
       title="America"
